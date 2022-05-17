@@ -1,0 +1,15 @@
+src/
+test/
+.husky/
+.github/
+coverage/
+assets/
+cc-reporter*
+.env.*
+.markdownlint.json
+LICENSE
+pnpm-lock.yaml
+tsconfig.json
+.eslintcache
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
