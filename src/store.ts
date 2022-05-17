@@ -35,6 +35,7 @@ export const createStore = <State, Payload, SagaResponse>(
         present: finalState as unknown as State,
         future: [],
       };
+      StateSubject.next(STATE);
     }
   });
 
@@ -60,6 +61,7 @@ export const createStore = <State, Payload, SagaResponse>(
             future: [],
           };
         }
+        StateSubject.next(STATE);
       }
     },
     undo: () => {
@@ -73,6 +75,7 @@ export const createStore = <State, Payload, SagaResponse>(
         }
         lastAction = STATE.past.pop();
       }
+      StateSubject.next(STATE);
     },
     redo: () => {
       let nextAction = STATE.future.pop();
@@ -85,10 +88,12 @@ export const createStore = <State, Payload, SagaResponse>(
         }
         nextAction = STATE.future.pop();
       }
+      StateSubject.next(STATE);
     },
     rebase: () => {
       STATE.past = [];
       STATE.future = [];
+      StateSubject.next(STATE);
     },
   };
 };
