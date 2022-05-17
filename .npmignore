@@ -3,6 +3,7 @@ test/
 .husky/
 .github/
 coverage/
+.nyc_output/
 assets/
 cc-reporter*
 .env.*
