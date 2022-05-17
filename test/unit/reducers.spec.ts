@@ -46,6 +46,23 @@ test('Initialize Store', async () => {
   };
   const STORE = createStore(LOGIC);
   STORE.dispatch({ name: 'INCREMENT' });
+  STORE.dispatch({ name: 'INCREMENT_ASYNC' });
+  STORE.dispatch({ name: 'INCREMENT_ASYNC' });
+  STORE.dispatch({ name: 'INCREMENT' });
+  STORE.dispatch({ name: 'INCREMENT_ASYNC' });
+  STORE.dispatch({ name: 'INCREMENT_ASYNC' });
+  STORE.undo();
+  STORE.undo();
+  STORE.redo();
+  STORE.redo();
+  STORE.redo();
+  STORE.subject();
+  STORE.dispatch({ name: 'INCREMENT' });
+  STORE.dispatch({ name: 'INCREMENT' });
+  STORE.dispatch({ name: 'INCREMENT' });
+  STORE.rebase();
+  STORE.get();
+  STORE.getAll();
 });
 
 test.run();
