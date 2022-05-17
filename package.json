@@ -29,9 +29,9 @@
     "test:all": "uvu -r tsm test",
     "test:unit": "uvu -r tsm test/unit",
     "test:integration": "uvu -r tsm test/integration",
-    "test:all:ci": "c8 uvu -r tsm test",
-    "test:unit:ci": "c8 uvu -r tsm test/unit",
-    "test:integration:ci": "c8 uvu -r tsm test/integration",
+    "test:all:ci": "c8 --reporter lcov uvu -r tsm test",
+    "test:unit:ci": "c8 --reporter lcov uvu -r tsm test/unit",
+    "test:integration:ci": "c8 --reporter lcov uvu -r tsm test/integration",
     "prepare": "husky install",
     "semantic-release": "semantic-release"
   },
