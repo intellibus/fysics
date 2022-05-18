@@ -18,6 +18,7 @@ export declare type Saga<State, Payload, SagaResponse> = (
 
 export declare type Action<State, Payload, SagaResponse> = {
   skipUndo?: boolean;
+  scope?: string | Array<string>;
   reducer: Reducer<State, Payload, SagaResponse>;
   saga?: Saga<State, Payload, SagaResponse>;
 };
