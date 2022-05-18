@@ -1,6 +1,6 @@
 import { produceWithPatches, enablePatches, applyPatches } from 'immer';
 import { cloneDeep } from 'lodash';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { Logic, DispatchAction } from './types';
 
 enablePatches();
@@ -15,6 +15,13 @@ export const createStore = <State, Payload, SagaResponse>(
   };
 
   const StateSubject = new BehaviorSubject(STATE);
+  const PresentStateSubject = new BehaviorSubject(
+    StateSubject.getValue().present,
+  );
+
+  StateSubject.pipe(map(({ present }) => present)).subscribe(
+    PresentStateSubject,
+  );
 
   const SagaSubject = new BehaviorSubject({ name: '' });
 
@@ -40,8 +47,10 @@ export const createStore = <State, Payload, SagaResponse>(
   });
 
   return {
-    subject: () => StateSubject,
-    subscribe: (observer) => StateSubject.subscribe(observer),
+    subject: () => PresentStateSubject,
+    subjectAll: () => StateSubject,
+    subscribe: (observer) => PresentStateSubject.subscribe(observer),
+    subscribeAll: (observer) => StateSubject.subscribe(observer),
     get: () => cloneDeep(STATE).present,
     getAll: () => cloneDeep(STATE),
     dispatch: (action: DispatchAction<Payload>) => {

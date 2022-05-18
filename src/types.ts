@@ -1,4 +1,4 @@
-import { Draft } from 'immer';
+import { Draft, Patch } from 'immer';
 
 export declare type DispatchAction<PayloadType> = {
   name: string;
@@ -27,4 +27,16 @@ export declare type Logic<State, Payload, SagaResponse> = {
   actions: {
     [ACTION_NAME: string]: Action<State, Payload, SagaResponse>;
   };
+};
+
+export declare type TimelineEvent<PayloadType> = {
+  action: DispatchAction<PayloadType>;
+  patches: Array<Patch>;
+  inversePatches: Array<Patch>;
+};
+
+export declare type FullState<State, PayloadType> = {
+  past: Array<TimelineEvent<PayloadType>>;
+  present: State;
+  future: Array<TimelineEvent<PayloadType>>;
 };
