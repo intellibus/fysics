@@ -1,6 +1,6 @@
 import { produceWithPatches, enablePatches, applyPatches } from 'immer';
 import { cloneDeep } from 'lodash';
-import { BehaviorSubject, map } from 'rxjs';
+import { Subject, map } from 'rxjs';
 import { Logic, DispatchAction } from './types';
 
 enablePatches();
@@ -14,16 +14,14 @@ export const createStore = <State, Payload, SagaResponse>(
     future: [],
   };
 
-  const StateSubject = new BehaviorSubject(STATE);
-  const PresentStateSubject = new BehaviorSubject(
-    StateSubject.getValue().present,
-  );
+  const StateSubject = new Subject();
+  const PresentStateSubject = new Subject();
 
   StateSubject.pipe(map(({ present }) => present)).subscribe(
     PresentStateSubject,
   );
 
-  const SagaSubject = new BehaviorSubject({ name: '' });
+  const SagaSubject = new Subject();
 
   SagaSubject.subscribe(async (action: DispatchAction<Payload>) => {
     const actionObj = LOGIC.actions[action.name];
@@ -45,6 +43,9 @@ export const createStore = <State, Payload, SagaResponse>(
       StateSubject.next(STATE);
     }
   });
+
+  StateSubject.next(STATE);
+  PresentStateSubject.next(STATE.present);
 
   return {
     subject: () => PresentStateSubject,
@@ -69,8 +70,8 @@ export const createStore = <State, Payload, SagaResponse>(
             present: finalState as unknown as State,
             future: [],
           };
+          StateSubject.next(STATE);
         }
-        StateSubject.next(STATE);
       }
     },
     undo: () => {
