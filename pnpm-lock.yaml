@@ -20,7 +20,7 @@ specifiers:
   dotenv: 16.0.1
   esbuild: 0.14.45
   eslint: 8.15.0
-  eslint-config-intellibus: 1.0.8
+  eslint-config-intellibus: 1.0.9
   eslint-formatter-mo: 1.1.1
   husky: 8.0.1
   immer: ^9.0.14
@@ -61,7 +61,7 @@ devDependencies:
   dotenv: 16.0.1
   esbuild: 0.14.45
   eslint: 8.15.0
-  eslint-config-intellibus: 1.0.8_hcfsmds2fshutdssjqluwm76uu
+  eslint-config-intellibus: 1.0.9_hcfsmds2fshutdssjqluwm76uu
   eslint-formatter-mo: 1.1.1
   husky: 8.0.1
   lint-staged: 12.4.1
@@ -2032,8 +2032,8 @@ packages:
       eslint-plugin-import: 2.26.0_cxw7m4buoscxlw52bgfqjkzg54
     dev: true
 
-  /eslint-config-intellibus/1.0.8_hcfsmds2fshutdssjqluwm76uu:
-    resolution: {integrity: sha512-tThlK5LLGRDvt9xd/A56zE6TYiYNHmt98kJM9u76Ts0aM2mVqBMQG5OWx6dP8VsTOM8qFzXy2J2hSAcLld0Rzg==}
+  /eslint-config-intellibus/1.0.9_hcfsmds2fshutdssjqluwm76uu:
+    resolution: {integrity: sha512-iUHUbildgRVxxMlvWe0iFyXiDyauJucI4vxCtJa7K9CXYuzOfKtT+kZlKM/V6Hondr+Rq7jiL+CgeJ7YeSgcdw==}
     peerDependencies:
       typescript: '*'
     peerDependenciesMeta:
