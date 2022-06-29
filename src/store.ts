@@ -1,6 +1,6 @@
 import { produceWithPatches, enablePatches, applyPatches } from 'immer';
 import { cloneDeep } from 'lodash';
-import { Subject, map } from 'rxjs';
+import { Subject, map, Observer } from 'rxjs';
 import { Logic, DispatchAction, FullState } from './types';
 
 enablePatches();
@@ -37,7 +37,7 @@ export const createStore = <State, Payload, SagaResponse>(
       );
       STATE = {
         past: [...STATE.past, { action, patches, inversePatches }],
-        present: finalState as unknown as State,
+        present: finalState,
         future: [],
       };
       StateSubject.next(STATE);
@@ -50,8 +50,28 @@ export const createStore = <State, Payload, SagaResponse>(
   return {
     subject: () => PresentStateSubject,
     subjectAll: () => StateSubject,
-    subscribe: (observer) => PresentStateSubject.subscribe(observer),
-    subscribeAll: (observer) => StateSubject.subscribe(observer),
+    subscribe: (
+      observer?: Partial<Observer<State>> | ((value: State) => void),
+    ) => {
+      if (observer) {
+        return PresentStateSubject.subscribe(
+          observer as Partial<Observer<State>>,
+        );
+      }
+      return PresentStateSubject.subscribe();
+    },
+    subscribeAll: (
+      observer?:
+        | Partial<Observer<FullState<State, Payload>>>
+        | ((value: FullState<State, Payload>) => void),
+    ) => {
+      if (observer) {
+        return StateSubject.subscribe(
+          observer as Partial<Observer<FullState<State, Payload>>>,
+        );
+      }
+      return StateSubject.subscribe();
+    },
     get: () => cloneDeep(STATE).present,
     getAll: () => cloneDeep(STATE),
     dispatch: (action: DispatchAction<Payload>) => {
@@ -67,7 +87,7 @@ export const createStore = <State, Payload, SagaResponse>(
 
           STATE = {
             past: [...STATE.past, { action, patches, inversePatches }],
-            present: finalState as unknown as State,
+            present: finalState,
             future: [],
           };
           StateSubject.next(STATE);
