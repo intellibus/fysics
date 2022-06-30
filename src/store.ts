@@ -8,7 +8,7 @@ enablePatches();
 export const createStore = <State, Payload, SagaResponse>(
   LOGIC: Logic<State, Payload, SagaResponse>,
 ) => {
-  let STATE = {
+  let STATE: FullState<State, Payload> = {
     past: [],
     present: LOGIC.initialState,
     future: [],
@@ -95,28 +95,42 @@ export const createStore = <State, Payload, SagaResponse>(
       }
     },
     undo: () => {
-      let lastAction = STATE.past.pop();
-      while (lastAction && lastAction.action) {
-        STATE.present = applyPatches(STATE.present, lastAction.inversePatches);
-        STATE.future = [...STATE.future, { ...lastAction }];
-        const actionObj = LOGIC.actions[lastAction.action.name];
-        if (!actionObj.skipUndo) {
+      let i = STATE.past.length - 1;
+      for (; i >= 0; i -= 1) {
+        if (!LOGIC.actions[STATE.past[i].action.name].skipUndo) {
           break;
         }
-        lastAction = STATE.past.pop();
       }
-      StateSubject.next(STATE);
+      if (i >= 0) {
+        for (let j = STATE.past.length - 1; j >= i; j -= 1) {
+          const lastAction = STATE.past.pop();
+          STATE.present = applyPatches(
+            STATE.present,
+            lastAction.inversePatches,
+          );
+          STATE.future = [...STATE.future, { ...lastAction }];
+        }
+        StateSubject.next(STATE);
+      }
     },
     redo: () => {
-      let nextAction = STATE.future.pop();
-      while (nextAction && nextAction.action) {
+      if (STATE.future.length === 0) {
+        return;
+      }
+      let i = STATE.future.length - 1;
+      let shouldBreak = false;
+      for (; i >= 0; i -= 1) {
+        if (!LOGIC.actions[STATE.future[i].action.name].skipUndo) {
+          if (shouldBreak) {
+            break;
+          }
+          shouldBreak = true;
+        }
+      }
+      for (let j = STATE.future.length - 1; j > i; j -= 1) {
+        const nextAction = STATE.future.pop();
         STATE.present = applyPatches(STATE.present, nextAction.patches);
         STATE.past = [...STATE.past, { ...nextAction }];
-        const actionObj = LOGIC.actions[nextAction.action.name];
-        if (!actionObj.skipUndo) {
-          break;
-        }
-        nextAction = STATE.future.pop();
       }
       StateSubject.next(STATE);
     },
