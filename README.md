@@ -68,23 +68,108 @@ pnpm install fysics
 
 ## Usage 💡
 
-Fysics seeks to work as a more minimalist version of [Redux](https://redux.js.org/) with undo/redo history and side effects following the [redux-saga](https://github.com/redux-saga/redux-saga) pattern, powered by [RxJS](https://rxjs.dev/) and [Immer](https://immerjs.github.io/immer/). Decide upon your types for State, Payload, and SagaResponse, write the logic for initial state and actions, initialize the store, and go!
+Fysics is a powerful state management tool. It seeks to work as a more minimalist version of [Redux](https://redux.js.org/) with undo/redo history and side effects following the [redux-saga](https://github.com/redux-saga/redux-saga) pattern, powered by [RxJS](https://rxjs.dev/) and [Immer](https://immerjs.github.io/immer/). Decide upon your types for State, Payload, and SagaResponse, write the logic for initial state and actions, initialize the store, and go!
 
-State: This is the type describing the present contents of the store.
-Payload: This is the type describing the parameter that is passed to the saga and/or reducer.
-SagaResponse: This is the type describing the return value from the saga, which is optionally passed to the reducer.
+### User-defined Types
 
-The logic passed to createStore() has the following shape:
+### State
 
-initialState: The present State of the store upon initialization
-actions: A dict whose keys are action names and whose values are Actions.
+This is the type describing the contents of the store.
 
-Actions are objects containing information on what to perform when that object's key in the logic's action dict is dispatched. An action has the following properties:
+Example:
 
-(optional - default false) skipUndo: (boolean) This should be set to true only if the action should not be considered as an individual operation to be undone. For example, if this action happens in the background without the user's knowledge after the most recent action the user has performed, it should be undone alongside the last action the user performs.
-(optional - default undefined) scope: (string | string[]) This is an organizational property which does not affect execution of anything inside the store.
-(required) reducer: (function) The reducer takes a [draft](https://immerjs.github.io/immer/#how-immer-works) version of the current state and modifies it directly to reflect the desired state after having run the action; this is used with Immer's produceWithPatches function to write to the store with the new state and patches + inverse patches for undo/redo history.
-(optional - default undefined) saga: (function) The saga runs before the reducer to perform some (usually asynchronous) action outside the scope of the store, for example writing to local storage or querying a database. The return value of the saga is then passed to the reducer of this action in the case it has an impact on the state.
+```typescript
+type StateType = {
+  count: number;
+};
+```
+
+While it is possible to add additional properties to the `State` after the store is initialized, it's recommended that the type used here contains all the properties you ever expect to have in your store. This better follows the intended state management design pattern, and will give the full benefits of using Typescript.
+
+### Payload
+
+This is the type describing the parameter that is passed to the saga and/or reducer.
+
+Example:
+
+```typescript
+type PayloadType = {
+  amount: number | undefined;
+};
+```
+
+Each action may have its own payload shape and corresponding type - the `Payload` type should be a union of all of these, and within the code for the reducer and/or saga, the payload should be typecast to the type of the expected payload.
+
+### SagaResponse
+
+This is the type describing the return value from the saga, which is optionally passed to the reducer.
+
+Example:
+
+```typescript
+type SagaResponseType = number;
+```
+
+As with the payload, each action that has a saga may have its own sagaResponse type. The `SagaResponse` type should be a union of all of these, and within the code for the reducer, the sagaResponse should be typecast to the type of the expected sagaResponse.
+
+---
+
+### Logic
+
+The `Logic` is where the actions and initial state of your store are defined. The type is below:
+
+```typescript
+type Logic<State, Payload, SagaResponse> = {
+  initialState: State;
+  actions: {
+    [ACTION_NAME: string]: Action<State, Payload, SagaResponse>;
+  };
+};
+```
+
+### initialState
+
+The `initialState` property should contain initial values for every property you plan on having in the store. Even if the value is undefined, the property should still be listed explicitly.
+
+### Actions
+
+Each property is a name of an action, with the corresponding value describing that action using the `Action` type:
+
+```typescript
+type Action<State, Payload, SagaResponse> = {
+  skipUndo?: boolean;
+  scope?: string | Array<string>;
+  reducer: Reducer<State, Payload, SagaResponse>;
+  saga?: Saga<State, Payload, SagaResponse>;
+};
+```
+
+The only required property for an `Action` is the `Reducer`, which is a function modifying a [draft](https://immerjs.github.io/immer/#how-immer-works) version of the current state following some logic, potentially using the payload and sagaResponse passed in.
+
+```typescript
+type Reducer<State, Payload, SagaResponse> = (
+  state: Draft<State>,
+  payload: Payload,
+  sagaResponse?: SagaResponse,
+) => void;
+```
+
+If the action has some side effect, the side effect is handled using a `Saga`:
+
+```typescript
+type Saga<State, Payload, SagaResponse> = (
+  state: State,
+  payload: Payload,
+) => Promise<SagaResponse>;
+```
+
+The saga runs before the reducer to perform some (usually asynchronous) action outside the scope of the store, for example writing to local storage or querying a database. The return value of the saga is then passed to the reducer of this action in the case it has an impact on the state.
+
+If the action should not be considered as an individual action to be undone or redone, set `skipUndo` to true. For example, if this action happens in the background without the user's knowledge after the most recent action the user has performed, initiating an undo should undo both the background action and the last action the user actually initiated.
+
+The `scope` property is used for abstracting parts of the logic away from individual actions - it is not used by the store itself, but may be useful inside reducers or sagas to avoid code duplication.
+
+---
 
 The store implements the [Svelte store contract](https://svelte.dev/docs#component-format-script-4-prefix-stores-with-$-to-access-their-values-store-contract) so the `$` syntactic sugar is available.
 
