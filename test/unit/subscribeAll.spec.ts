@@ -13,4 +13,10 @@ test('Subscribe to Total State', async () => {
   assert.equal(curCount, 1);
 });
 
+test('Subscribe to Total State (no observer)', async () => {
+  const STORE = createStore(LOGIC);
+  const subscription = STORE.subscribeAll();
+  subscription.unsubscribe();
+});
+
 test.run();
