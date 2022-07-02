@@ -31,7 +31,7 @@ specifiers:
   rxjs: ^7.5.5
   semantic-release: 19.0.3
   semantic-release-interval: 1.0.46
-  ts-node: 10.8.1
+  ts-node: 10.8.2
   tsm: 2.2.1
   typescript: 4.7.4
   uvu: 0.5.4
@@ -69,7 +69,7 @@ devDependencies:
   pretty-quick: 3.1.3_prettier@2.7.1
   semantic-release: 19.0.3
   semantic-release-interval: 1.0.46
-  ts-node: 10.8.1_7p2njxwrs7y7wxnhj44bvkvldm
+  ts-node: 10.8.2_7p2njxwrs7y7wxnhj44bvkvldm
   tsm: 2.2.1
   typescript: 4.7.4
   uvu: 0.5.4
@@ -1509,7 +1509,7 @@ packages:
     dependencies:
       '@types/node': 17.0.34
       cosmiconfig: 7.0.1
-      ts-node: 10.8.1_7p2njxwrs7y7wxnhj44bvkvldm
+      ts-node: 10.8.2_7p2njxwrs7y7wxnhj44bvkvldm
       typescript: 4.7.4
     transitivePeerDependencies:
       - '@swc/core'
@@ -4778,8 +4778,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /ts-node/10.8.1_7p2njxwrs7y7wxnhj44bvkvldm:
-    resolution: {integrity: sha512-Wwsnao4DQoJsN034wePSg5nZiw4YKXf56mPIAeD6wVmiv+RytNSWqc2f3fKvcUoV+Yn2+yocD71VOfQHbmVX4g==}
+  /ts-node/10.8.2_7p2njxwrs7y7wxnhj44bvkvldm:
+    resolution: {integrity: sha512-LYdGnoGddf1D6v8REPtIH+5iq/gTDuZqv2/UJUU7tKjuEU8xVZorBM+buCGNjj+pGEud+sOoM4CX3/YzINpENA==}
     hasBin: true
     peerDependencies:
       '@swc/core': '>=1.2.50'
