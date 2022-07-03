@@ -34,7 +34,7 @@ specifiers:
   ts-node: 10.8.2
   tsm: 2.2.1
   typescript: 4.7.4
-  uvu: 0.5.4
+  uvu: 0.5.5
 
 dependencies:
   immer: 9.0.15
@@ -72,7 +72,7 @@ devDependencies:
   ts-node: 10.8.2_7p2njxwrs7y7wxnhj44bvkvldm
   tsm: 2.2.1
   typescript: 4.7.4
-  uvu: 0.5.4
+  uvu: 0.5.5
 
 packages:
 
@@ -4956,8 +4956,8 @@ packages:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
 
-  /uvu/0.5.4:
-    resolution: {integrity: sha512-x1CyUjcP9VKaNPhjeB3FIc/jqgLsz2Q9LFhRzUTu/jnaaHILEGNuE0XckQonl8ISLcwyk9I2EZvWlYsQnwxqvQ==}
+  /uvu/0.5.5:
+    resolution: {integrity: sha512-J3SlxDp1MnHkqYvxnz4geS4jYWd2dXcNMltFWYmuiMpe+q1XOyXXaZb0qiO90o1xEhMWNuvnzqoXrDxbYYQjDQ==}
     engines: {node: '>=8'}
     hasBin: true
     dependencies:
