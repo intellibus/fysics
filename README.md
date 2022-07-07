@@ -175,7 +175,116 @@ The store implements the [Svelte store contract](https://svelte.dev/docs#compone
 
 ## Documentation 📄
 
-Documentation is yet to be finalized as fysics is still _Under Development_
+The `Store` returned by the `createStore` function is contains methods to interface with two internal components: the store's present state (of type `State`), and the store's full state, which is defined as
+
+```typescript
+FullState<State, Payload>;
+```
+
+where
+
+```typescript
+type FullState<State, Payload> = {
+  past: Array<TimelineEvent<PayloadType>>;
+  present: State;
+  future: Array<TimelineEvent<PayloadType>>;
+};
+
+type TimelineEvent<Payload> = {
+  action: DispatchAction<Payload>;
+  patches: Array<Patch>;
+  inversePatches: Array<Patch>;
+};
+
+type DispatchAction<Payload> = {
+  name: string;
+  payload?: Payload;
+};
+```
+
+are the relevant type definitions. [See here](https://immerjs.github.io/immer/patches/) to understand the `Patch` type imported from immer.
+
+### subject
+
+```typescript
+subject: () => Subject<State>;
+```
+
+Gets the [subject](https://rxjs.dev/guide/subject) for the store's present state.
+
+### subjectAll
+
+```typescript
+subject: () => Subject<FullState<State, Payload>>;
+```
+
+Gets the [subject](https://rxjs.dev/guide/subject) for the store's full state.
+
+### subscribe
+
+```typescript
+subscribe: (observer?: Partial<Observer<State>> | ((value: State) => void)) =>
+  Subscription;
+```
+
+Creates a [subscription](https://rxjs.dev/guide/subscription) to the store's present state with the specified [observer](https://rxjs.dev/guide/observer) or function to run when the store's present state [subject](https://rxjs.dev/guide/subject) pushes a new value (i.e. when the store's present state changes).
+
+### subscribeAll
+
+```typescript
+subscribe: (observer?: Partial<Observer<State>> | ((value: State) => void)) =>
+  Subscription;
+```
+
+Creates a [subscription](https://rxjs.dev/guide/subscription) to the store's full state with the specified [observer](https://rxjs.dev/guide/observer) or function to run when the store's full state [subject](https://rxjs.dev/guide/subject) pushes a new value (i.e. when the store's full state changes).
+
+### get
+
+```typescript
+get: () => State;
+```
+
+Returns a deep copy of the store's present state.
+
+### getAll
+
+```typescript
+getAll: () => FullState<State, Payload>;
+```
+
+Returns a deep copy of the store's full state.
+
+### dispatch
+
+```typescript
+dispatch: (action: DispatchAction<Payload>) => void
+```
+
+Dispatches an `Action` (see the Usage section) by name, with the provided payload.
+
+### undo
+
+```typescript
+undo: () => void
+```
+
+Undoes actions in the store's past until an action with `skipUndo: false` is undone, or does nothing if all the actions in the store's past have `skipUndo: true`.
+
+### redo
+
+```typescript
+redo: () => void
+```
+
+Redoes actions in the store's future until the second most recent action with `skipUndo: false` is on top of the stack, or redoes everything if there is no such action.
+
+### rebase
+
+```typescript
+rebase: () => void
+```
+
+Clears the past and future of the store's full state.
 
 ## Contributing 🍰
 
