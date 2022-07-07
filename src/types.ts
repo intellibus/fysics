@@ -1,8 +1,8 @@
 import { Draft, Patch } from 'immer';
 
-export declare type DispatchAction<PayloadType> = {
+export declare type DispatchAction<Payload> = {
   name: string;
-  payload?: PayloadType;
+  payload?: Payload;
 };
 
 export declare type Reducer<State, Payload, SagaResponse> = (
@@ -30,14 +30,14 @@ export declare type Logic<State, Payload, SagaResponse> = {
   };
 };
 
-export declare type TimelineEvent<PayloadType> = {
-  action: DispatchAction<PayloadType>;
+export declare type TimelineEvent<Payload> = {
+  action: DispatchAction<Payload>;
   patches: Array<Patch>;
   inversePatches: Array<Patch>;
 };
 
-export declare type FullState<State, PayloadType> = {
-  past: Array<TimelineEvent<PayloadType>>;
+export declare type FullState<State, Payload> = {
+  past: Array<TimelineEvent<Payload>>;
   present: State;
-  future: Array<TimelineEvent<PayloadType>>;
+  future: Array<TimelineEvent<Payload>>;
 };
