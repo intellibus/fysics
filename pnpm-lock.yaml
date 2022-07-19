@@ -32,7 +32,7 @@ specifiers:
   semantic-release: 19.0.3
   semantic-release-interval: 1.0.46
   ts-node: 10.9.1
-  tsm: 2.2.1
+  tsm: 2.2.2
   typescript: 4.7.4
   uvu: 0.5.6
 
@@ -70,7 +70,7 @@ devDependencies:
   semantic-release: 19.0.3
   semantic-release-interval: 1.0.46
   ts-node: 10.9.1_7p2njxwrs7y7wxnhj44bvkvldm
-  tsm: 2.2.1
+  tsm: 2.2.2
   typescript: 4.7.4
   uvu: 0.5.6
 
@@ -4797,8 +4797,8 @@ packages:
   /tslib/2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
 
-  /tsm/2.2.1:
-    resolution: {integrity: sha512-qvJB0baPnxQJolZru11mRgGTdNlx17WqgJnle7eht3Vhb+VUR4/zFA5hFl6NqRe7m8BD9w/6yu0B2XciRrdoJA==}
+  /tsm/2.2.2:
+    resolution: {integrity: sha512-bXkt675NbbqfwRHSSn8kSNEEHvoIUFDM9G6tUENkjEKpAEbrEzieO3PxUiRJylMw8fEGpcf5lSjadzzz12pc2A==}
     engines: {node: '>=12'}
     hasBin: true
     dependencies:
