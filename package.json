@@ -56,7 +56,7 @@
     "esbuild": "0.15.6",
     "eslint": "8.23.0",
     "eslint-config-intellibus": "1.0.58",
-    "eslint-formatter-mo": "1.1.1",
+    "eslint-formatter-mo": "1.2.0",
     "husky": "8.0.1",
     "lint-staged": "13.0.3",
     "prettier": "2.7.1",
