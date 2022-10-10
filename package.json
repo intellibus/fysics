@@ -55,7 +55,7 @@
     "dotenv": "16.0.3",
     "esbuild": "0.15.10",
     "eslint": "8.25.0",
-    "eslint-config-intellibus": "1.0.75",
+    "eslint-config-intellibus": "1.0.76",
     "eslint-formatter-mo": "1.2.0",
     "husky": "8.0.1",
     "lint-staged": "13.0.3",
