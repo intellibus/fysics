@@ -24,7 +24,7 @@ specifiers:
   eslint-formatter-mo: 1.2.0
   husky: 8.0.2
   immer: ^9.0.14
-  lint-staged: 13.0.4
+  lint-staged: 13.1.0
   lodash: ^4.17.21
   prettier: 2.8.0
   pretty-quick: 3.1.3
@@ -64,7 +64,7 @@ devDependencies:
   eslint-config-intellibus: 1.0.117_s5ps7njkmjlaqajutnox5ntcla
   eslint-formatter-mo: 1.2.0
   husky: 8.0.2
-  lint-staged: 13.0.4
+  lint-staged: 13.1.0
   prettier: 2.8.0
   pretty-quick: 3.1.3_prettier@2.8.0
   semantic-release: 19.0.5
@@ -3424,8 +3424,8 @@ packages:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
 
-  /lint-staged/13.0.4:
-    resolution: {integrity: sha512-HxlHCXoYRsq9QCby5wFozmZW00hMs/9e3l+/dz6Qr8Kle4UH0kJTdABAbqhzG+3pcG6QjL9kz7NgGBfph+a5dw==}
+  /lint-staged/13.1.0:
+    resolution: {integrity: sha512-pn/sR8IrcF/T0vpWLilih8jmVouMlxqXxKuAojmbiGX5n/gDnz+abdPptlj0vYnbfE0SQNl3CY/HwtM0+yfOVQ==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
