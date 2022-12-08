@@ -10,7 +10,7 @@ specifiers:
   '@semantic-release/npm': 9.0.1
   '@semantic-release/release-notes-generator': 10.0.3
   '@types/lodash': 4.14.191
-  '@types/node': 18.11.11
+  '@types/node': 18.11.12
   '@typescript-eslint/eslint-plugin': 5.46.0
   '@typescript-eslint/parser': 5.46.0
   c8: 7.12.0
@@ -51,7 +51,7 @@ devDependencies:
   '@semantic-release/npm': 9.0.1_semantic-release@19.0.5
   '@semantic-release/release-notes-generator': 10.0.3_semantic-release@19.0.5
   '@types/lodash': 4.14.191
-  '@types/node': 18.11.11
+  '@types/node': 18.11.12
   '@typescript-eslint/eslint-plugin': 5.46.0_5mle7isnkfgjmrghnnczirv6iy
   '@typescript-eslint/parser': 5.46.0_ha6vam6werchizxrnqvarmz2zu
   c8: 7.12.0
@@ -69,7 +69,7 @@ devDependencies:
   pretty-quick: 3.1.3_prettier@2.8.1
   semantic-release: 19.0.5
   semantic-release-interval: 1.0.46
-  ts-node: 10.9.1_bspv7bpieoza2i5ctiw2ofswem
+  ts-node: 10.9.1_r65g46xrm45gbuklnvp6xevc2y
   tsm: 2.3.0
   typescript: 4.9.4
   uvu: 0.5.6
@@ -881,8 +881,8 @@ packages:
     resolution: {integrity: sha512-hcU9AIQVHmPnmjRK+XUUYlILlr9pQrsqSrwov/JK1pnf3GTQowVBhx54FbvM0AU/VXGH4i3+vgXS5EguR7fysA==}
     dev: true
 
-  /@types/node/18.11.11:
-    resolution: {integrity: sha512-KJ021B1nlQUBLopzZmPBVuGU9un7WJd/W4ya7Ih02B4Uwky5Nja0yGYav2EfYIk0RR2Q9oVhf60S2XR1BCWJ2g==}
+  /@types/node/18.11.12:
+    resolution: {integrity: sha512-FgD3NtTAKvyMmD44T07zz2fEf+OKwutgBCEVM8GcvMGVGaDktiLNTDvPwC/LUe3PinMW+X6CuLOF2Ui1mAlSXg==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -5109,37 +5109,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /ts-node/10.9.1_bspv7bpieoza2i5ctiw2ofswem:
-    resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
-    hasBin: true
-    peerDependencies:
-      '@swc/core': '>=1.2.50'
-      '@swc/wasm': '>=1.2.50'
-      '@types/node': '*'
-      typescript: '>=2.7'
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-      '@swc/wasm':
-        optional: true
-    dependencies:
-      '@cspotcode/source-map-support': 0.8.1
-      '@tsconfig/node10': 1.0.9
-      '@tsconfig/node12': 1.0.11
-      '@tsconfig/node14': 1.0.3
-      '@tsconfig/node16': 1.0.3
-      '@types/node': 18.11.11
-      acorn: 8.8.1
-      acorn-walk: 8.2.0
-      arg: 4.1.3
-      create-require: 1.1.1
-      diff: 4.0.2
-      make-error: 1.3.6
-      typescript: 4.9.4
-      v8-compile-cache-lib: 3.0.1
-      yn: 3.1.1
-    dev: true
-
   /ts-node/10.9.1_ewcgsh5jhk3o7xvttutb4bhery:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
@@ -5160,6 +5129,37 @@ packages:
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.3
       '@types/node': 14.18.34
+      acorn: 8.8.1
+      acorn-walk: 8.2.0
+      arg: 4.1.3
+      create-require: 1.1.1
+      diff: 4.0.2
+      make-error: 1.3.6
+      typescript: 4.9.4
+      v8-compile-cache-lib: 3.0.1
+      yn: 3.1.1
+    dev: true
+
+  /ts-node/10.9.1_r65g46xrm45gbuklnvp6xevc2y:
+    resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
+    hasBin: true
+    peerDependencies:
+      '@swc/core': '>=1.2.50'
+      '@swc/wasm': '>=1.2.50'
+      '@types/node': '*'
+      typescript: '>=2.7'
+    peerDependenciesMeta:
+      '@swc/core':
+        optional: true
+      '@swc/wasm':
+        optional: true
+    dependencies:
+      '@cspotcode/source-map-support': 0.8.1
+      '@tsconfig/node10': 1.0.9
+      '@tsconfig/node12': 1.0.11
+      '@tsconfig/node14': 1.0.3
+      '@tsconfig/node16': 1.0.3
+      '@types/node': 18.11.12
       acorn: 8.8.1
       acorn-walk: 8.2.0
       arg: 4.1.3
