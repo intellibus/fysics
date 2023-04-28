@@ -9,7 +9,7 @@ specifiers:
   '@semantic-release/github': 8.0.7
   '@semantic-release/npm': 10.0.2
   '@semantic-release/release-notes-generator': 10.0.3
-  '@types/lodash': 4.14.192
+  '@types/lodash': 4.14.194
   '@types/node': 18.16.2
   '@typescript-eslint/eslint-plugin': 5.57.0
   '@typescript-eslint/parser': 5.57.0
@@ -50,7 +50,7 @@ devDependencies:
   '@semantic-release/github': 8.0.7_semantic-release@21.0.0
   '@semantic-release/npm': 10.0.2_semantic-release@21.0.0
   '@semantic-release/release-notes-generator': 10.0.3_semantic-release@21.0.0
-  '@types/lodash': 4.14.192
+  '@types/lodash': 4.14.194
   '@types/node': 18.16.2
   '@typescript-eslint/eslint-plugin': 5.57.0_p7xo4zbf6rlx7pmjonhlydeowm
   '@typescript-eslint/parser': 5.57.0_j4766f7ecgqbon3u7zlxn5zszu
@@ -907,8 +907,8 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
-  /@types/lodash/4.14.192:
-    resolution: {integrity: sha512-km+Vyn3BYm5ytMO13k9KTp27O75rbQ0NFw+U//g+PX7VZyjCioXaRFisqSIJRECljcTv73G3i6BpglNGHgUQ5A==}
+  /@types/lodash/4.14.194:
+    resolution: {integrity: sha512-r22s9tAS7imvBt2lyHC9B8AGwWnXaYb1tY09oyLkXDs4vArpYJzw09nj8MLx5VfciBPGIb+ZwG0ssYnEPJxn/g==}
     dev: true
 
   /@types/minimatch/3.0.5:
