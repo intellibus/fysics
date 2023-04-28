@@ -26,7 +26,7 @@ specifiers:
   immer: ^9.0.14
   lint-staged: 13.2.2
   lodash: ^4.17.21
-  prettier: 2.8.7
+  prettier: 2.8.8
   pretty-quick: 3.1.3
   rxjs: ^7.5.5
   semantic-release: 21.0.0
@@ -65,8 +65,8 @@ devDependencies:
   eslint-formatter-mo: 1.2.0
   husky: 8.0.3
   lint-staged: 13.2.2
-  prettier: 2.8.7
-  pretty-quick: 3.1.3_prettier@2.8.7
+  prettier: 2.8.8
+  pretty-quick: 3.1.3_prettier@2.8.8
   semantic-release: 21.0.0
   semantic-release-interval: 1.0.46
   ts-node: 10.9.1_2xvfnlkss5voknohs74dndxfti
@@ -4627,13 +4627,13 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier/2.8.7:
-    resolution: {integrity: sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==}
+  /prettier/2.8.8:
+    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
 
-  /pretty-quick/3.1.3_prettier@2.8.7:
+  /pretty-quick/3.1.3_prettier@2.8.8:
     resolution: {integrity: sha512-kOCi2FJabvuh1as9enxYmrnBC6tVMoVOenMaBqRfsvBHB0cbpYHjdQEpSglpASDFEXVwplpcGR4CLEaisYAFcA==}
     engines: {node: '>=10.13'}
     hasBin: true
@@ -4646,7 +4646,7 @@ packages:
       ignore: 5.2.4
       mri: 1.2.0
       multimatch: 4.0.0
-      prettier: 2.8.7
+      prettier: 2.8.8
     dev: true
 
   /process-nextick-args/2.0.1:
